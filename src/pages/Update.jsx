@@ -1,7 +1,8 @@
 import React from 'react';
 import { useParams } from "react-router-dom"; 
 import Typography from '@mui/material/Typography';
-import CarForm from "../components/forms/CarForm"
+import CarForm from "../components/forms/CarForm";
+import { CarsContext } from '../components/contexts/car.context';
 
 function Update() {
   const { id } = useParams();

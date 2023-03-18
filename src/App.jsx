@@ -10,6 +10,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme/theme';
 import Layout from './components/Layout';
+import { CarsProvider } from './components/contexts/car.context';
+import { UIProvider } from './components/contexts/UI.context';
 
 //import pages
 import List from './pages/List';
@@ -27,14 +29,18 @@ function App() {
       <CssBaseline/>
        
         <ThemeProvider theme={theme}>
-          <Routes>
-          <Route path="/" element={<Layout/>}>
-          <Route index element={<List />}/>
-          <Route path="/add" element={<Add />}/>
-          <Route path="/update/:id" element={<Update />}/>
-          <Route path="/*" element={<NotFound />}/>
-          </Route>
-          </Routes>
+          <CarsProvider>
+            <UIProvider>
+            <Routes>
+              <Route path="/" element={<Layout/>}>
+              <Route index element={<List />}/>
+              <Route path="/add" element={<Add />}/>
+              <Route path="/update/:id" element={<Update />}/>
+              <Route path="/*" element={<NotFound />}/>
+              </Route>
+            </Routes>
+            </UIProvider>
+          </CarsProvider>
         </ThemeProvider>
       
     </Router>
